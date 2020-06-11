@@ -1,26 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+  Route
+} from "react-router-dom";
+import { hot } from 'react-hot-loader/root'
+import Index from '@/pages/index';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Route path='/' exact component={Index}></Route>
+    </Router>
   );
 }
 
-export default App;
+export default process.env.NODE_ENV === 'development' ? hot(App) : App;
