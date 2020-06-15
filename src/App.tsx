@@ -1,17 +1,25 @@
 import React from 'react';
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  Switch
 } from "react-router-dom";
-import { hot } from 'react-hot-loader/root'
+
+import Header from '@/components/Header/header';
 import Index from '@/pages/index';
+import Detail from '@/pages/detail/detail';
+import './App.less';
 
 function App() {
   return (
     <Router>
-      <Route path='/' exact component={Index}></Route>
+      <Header />
+      <Switch>
+        <Route path='/' exact component={Index} />
+        <Route path='/detail' exact component={Detail} />
+      </Switch>
     </Router>
   );
 }
 
-export default process.env.NODE_ENV === 'development' ? hot(App) : App;
+export default App;
