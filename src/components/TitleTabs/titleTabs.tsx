@@ -4,14 +4,8 @@ import { withRouter, RouteComponentProps } from 'react-router-dom';
 import './style/titleTabs.less';
 
 class TitleTabs extends React.Component <IProps, IState> {
-  // constructor(props: IProps) {
-  //   super(props);
-  // }
-
   render() {
-    const itemList:Array<itemList> = [
-      {icon: 'icon', title: '首页', route: 'wa'}
-    ];
+    const itemList = this.props.tabs;
     return (
       <ul className='list-container'>
         {
@@ -29,11 +23,19 @@ class TitleTabs extends React.Component <IProps, IState> {
 }
 
 interface IProps extends RouteComponentProps {
-
+  tabs: Array<tabItem>
 };
 
 interface IState {
 
+}
+
+interface tabItem {
+  icon: string,
+  title: string,
+  animate?: string,
+  route?: string,
+  children?: Array<tabItem>
 }
 
 interface itemList {

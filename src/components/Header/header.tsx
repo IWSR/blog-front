@@ -4,10 +4,30 @@ import { withRouter, RouteComponentProps } from 'react-router-dom';
 import './style/header.less';
 import TitleTabs from '@/components/TitleTabs/titleTabs';
 
+const tabsConfig = [
+  {
+    icon: 'icon--sport_09',
+    title: '首页'
+  },
+  {
+    icon: 'icon-guidang',
+    title: '归档'
+  },
+  {
+    icon: 'icon-list',
+    title: '清单'
+  },
+  {
+    icon: 'icon-tubiao--copy',
+    title: '留言板'
+  },
+  {
+    icon: 'icon-pengyou',
+    title: '友人帐'
+  }
+];
+
 class Header extends React.Component <IProps, IState> {
-  // constructor(props: IProps) {
-  //   super(props);
-  // }
 
   render() {
     return (
@@ -22,7 +42,7 @@ class Header extends React.Component <IProps, IState> {
             <rp />
           </ruby>
         </div>
-        <TitleTabs />
+        <TitleTabs tabs={tabsConfig} />
         <div className="login-area">login</div>
       </div>
     );
@@ -30,7 +50,7 @@ class Header extends React.Component <IProps, IState> {
 }
 
 interface IProps extends RouteComponentProps {
-
+  
 };
 
 interface IState {
