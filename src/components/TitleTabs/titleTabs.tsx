@@ -4,15 +4,16 @@ import { withRouter, RouteComponentProps } from 'react-router-dom';
 import './style/titleTabs.less';
 
 class TitleTabs extends React.Component <IProps, IState> {
+
   render() {
-    const itemList = this.props.tabs;
+    const { tabs, isShow } = this.props;
     return (
-      <ul className='list-container'>
+      <ul className={`list-container ${isShow ? 'list-container__show' : ''}`}>
         {
-          itemList.map((item, index) => {
+          tabs.map((item, index) => {
             return (
               <li className='list-item' key={index}>
-                <i className={`iconfont ${item.icon}`}></i>{item.title}
+                <i className={`iconfont ${item.icon} ${item.animate ? item.animate : ''}`}></i>{item.title}
               </li>
             )
           })
@@ -24,10 +25,11 @@ class TitleTabs extends React.Component <IProps, IState> {
 
 interface IProps extends RouteComponentProps {
   tabs: Array<tabItem>
+  isShow: boolean
 };
 
 interface IState {
-
+  
 }
 
 interface tabItem {
@@ -36,12 +38,6 @@ interface tabItem {
   animate?: string,
   route?: string,
   children?: Array<tabItem>
-}
-
-interface itemList {
-  title: string;
-  icon: string;
-  route?: string;
 }
 
 export default withRouter(TitleTabs);

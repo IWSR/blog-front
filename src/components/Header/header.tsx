@@ -7,31 +7,82 @@ import TitleTabs from '@/components/TitleTabs/titleTabs';
 const tabsConfig = [
   {
     icon: 'icon--sport_09',
-    title: '首页'
+    title: '首页',
+    animate: 'bounce'
   },
   {
     icon: 'icon-guidang',
-    title: '归档'
+    title: '归档',
+    animate: 'tada'
   },
   {
     icon: 'icon-list',
-    title: '清单'
+    title: '清单',
+    animate: 'headShake'
   },
   {
     icon: 'icon-tubiao--copy',
-    title: '留言板'
+    title: '留言板',
+    animate: 'tada'
   },
   {
     icon: 'icon-pengyou',
-    title: '友人帐'
+    title: '友人帐',
+    animate: 'gulu'
   }
 ];
 
 class Header extends React.Component <IProps, IState> {
 
+  constructor(props: IProps) {
+    super(props);
+    this.state = {
+      isMouseOver: false,
+      isNeedShow: false
+    };
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', () => {
+      console.log(window.scrollY, 'addEventListener');
+      if (window.scrollY > 0 && !this.state.isNeedShow) {
+        this.setState({
+          isNeedShow: true
+        });
+      } else if (window.scrollY === 0 && this.state.isNeedShow) {
+        this.setState({
+          isNeedShow: false
+        });
+      }
+    });
+  }
+
+  onMouseOver(e: any) {
+    console.log(e, 'onMouseOver');
+    const {isMouseOver} = this.state;
+    if (isMouseOver) {
+      return false
+    }
+    this.setState({
+      isMouseOver: true
+    });
+  }
+
+  onMouseOut(e: any) {
+    console.log(e, 'onMouseOut');
+    const {isMouseOver} = this.state;
+    if (!isMouseOver) {
+      return false
+    }
+    this.setState({
+      isMouseOver: false
+    });
+  }
+
   render() {
+    const { isMouseOver, isNeedShow } = this.state;
     return (
-      <div className='header-container'>
+      <div className={`header-container ${isNeedShow ? 'header-container_show' : ''}`} onMouseOver={(e) => this.onMouseOver(e)} onMouseOut={(e) => this.onMouseOut(e)}>
         <div className="home">
           <ruby className='title'>
             <span className='title__bg'>未来道具</span>
@@ -42,7 +93,7 @@ class Header extends React.Component <IProps, IState> {
             <rp />
           </ruby>
         </div>
-        <TitleTabs tabs={tabsConfig} />
+        <TitleTabs tabs={tabsConfig} isShow={isMouseOver || isNeedShow} />
         <div className="login-area">login</div>
       </div>
     );
@@ -54,7 +105,8 @@ interface IProps extends RouteComponentProps {
 };
 
 interface IState {
-
+  isMouseOver: boolean
+  isNeedShow: boolean
 }
 
 export default withRouter(Header);
