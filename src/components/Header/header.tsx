@@ -13,7 +13,19 @@ const tabsConfig = [
   {
     icon: 'icon-guidang',
     title: '归档',
-    animate: 'tada'
+    animate: 'tada',
+    children: [
+      {
+        icon: 'icon--sport_09',
+        title: 'test1',
+        animate: 'bounce'
+      },
+      {
+        icon: 'icon--sport_09',
+        title: 'test2',
+        animate: 'bounce'
+      }
+    ]
   },
   {
     icon: 'icon-list',
@@ -44,7 +56,6 @@ class Header extends React.Component <IProps, IState> {
 
   componentDidMount() {
     window.addEventListener('scroll', () => {
-      console.log(window.scrollY, 'addEventListener');
       if (window.scrollY > 0 && !this.state.isNeedShow) {
         this.setState({
           isNeedShow: true
@@ -58,7 +69,6 @@ class Header extends React.Component <IProps, IState> {
   }
 
   onMouseOver(e: any) {
-    console.log(e, 'onMouseOver');
     const {isMouseOver} = this.state;
     if (isMouseOver) {
       return false
@@ -69,7 +79,6 @@ class Header extends React.Component <IProps, IState> {
   }
 
   onMouseOut(e: any) {
-    console.log(e, 'onMouseOut');
     const {isMouseOver} = this.state;
     if (!isMouseOver) {
       return false
