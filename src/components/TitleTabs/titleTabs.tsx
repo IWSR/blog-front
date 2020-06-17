@@ -54,7 +54,7 @@ class TitleTabs extends React.Component <IProps, IState> {
     const { currentIndex } = this.state;
 
     return (
-      <ul className={`list-container ${isShow || true ? 'list-container__show' : ''}`}>
+      <ul className={`list-container ${isShow ? 'list-container__show' : ''}`}>
         {
           tabs.map((item, index) => {
             const children = _.get(item, 'children', []);
