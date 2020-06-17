@@ -35,7 +35,19 @@ const tabsConfig = [
   {
     icon: 'icon-tubiao--copy',
     title: '留言板',
-    animate: 'tada'
+    animate: 'tada',
+    children: [
+      {
+        icon: 'icon--sport_09',
+        title: 'test123333',
+        animate: 'bounce'
+      },
+      {
+        icon: 'icon--sport_09',
+        title: 'test2',
+        animate: 'bounce'
+      }
+    ]
   },
   {
     icon: 'icon-pengyou',
@@ -93,13 +105,15 @@ class Header extends React.Component <IProps, IState> {
     return (
       <div className={`header-container ${isNeedShow ? 'header-container_show' : ''}`} onMouseOver={(e) => this.onMouseOver(e)} onMouseOut={(e) => this.onMouseOut(e)}>
         <div className="home">
-          <ruby className='title'>
-            <span className='title__bg'>未来道具</span>
-            <span className='title__rotate'>の</span>
-            <span>研究所</span>
-            <rp />
+          <ruby>
+            <span className='title'>
+              <span className='title__bg'>未来道具</span>
+              <span className='title__rotate'>
+                <i className='iconfont icon-chilun'></i>
+              </span>
+              <span>研究所</span>
+            </span>
             <rt className='subtitle'>未来道具研究所</rt>
-            <rp />
           </ruby>
         </div>
         <TitleTabs tabs={tabsConfig} isShow={isMouseOver || isNeedShow} />

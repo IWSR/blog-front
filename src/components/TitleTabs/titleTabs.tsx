@@ -6,7 +6,32 @@ import './style/titleTabs.less';
 
 class TitleTabs extends React.Component <IProps, IState> {
 
+  constructor(props: IProps) {
+    super(props);
+    this.state = {
+      currentIndex: null
+    };
+  }
+
+  onMouseOverHandle(e: any) {
+    const { index } = e.currentTarget.dataset;
+    const { currentIndex } = this.state;
+    if (parseInt(index) === parseInt(currentIndex)) {
+      return false
+    }
+    this.setState({
+      currentIndex: parseInt(index)
+    });
+  }
+
+  onMouseOutHandle(e: any) {
+    this.setState({
+      currentIndex: null
+    });
+  }
+
   renderChildren(children: Array<tabItem>) {
+    console.log('renderChildren');
     if (!children.length) return null;
     return (
       <ul className='select-items'>
@@ -26,6 +51,8 @@ class TitleTabs extends React.Component <IProps, IState> {
 
   render() {
     const { tabs, isShow } = this.props;
+    const { currentIndex } = this.state;
+
     return (
       <ul className={`list-container ${isShow || true ? 'list-container__show' : ''}`}>
         {
@@ -33,12 +60,15 @@ class TitleTabs extends React.Component <IProps, IState> {
             const children = _.get(item, 'children', []);
             const isChildrenExit = !!children.length;
             return (
-              <li className={`list-item`} key={index}>
+              <li className={`list-item ${parseInt(currentIndex) === index}`} key={index}
+                data-index={index}
+                onMouseOver={(e) => {this.onMouseOverHandle(e)}}
+                onMouseOut={(e) => {this.onMouseOutHandle(e)}}>
                 <div className='box'>
                   <i className={`iconfont ${item.icon} ${item.animate ? item.animate : ''}`}></i>{item.title}
                 </div>
                 {
-                  isChildrenExit ? this.renderChildren(children) : null
+                  (isChildrenExit) ? this.renderChildren(children) : null
                 }
               </li>
             )
@@ -55,7 +85,7 @@ interface IProps extends RouteComponentProps {
 };
 
 interface IState {
-  
+  currentIndex: any
 }
 
 interface tabItem {
