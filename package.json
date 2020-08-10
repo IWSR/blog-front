@@ -148,6 +148,7 @@
   },
   "devDependencies": {
     "less": "^3.11.3",
-    "less-loader": "^6.1.1"
+    "less-loader": "^6.1.1",
+    "markdown-it": "^11.0.0"
   }
 }
