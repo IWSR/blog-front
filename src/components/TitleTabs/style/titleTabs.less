@@ -1,5 +1,4 @@
 @keyframes bounce {
-
   from,
   10%,
   26%,
@@ -184,7 +183,7 @@
     .select-items {
       position: absolute;
       top: 80%;
-      display: flex;
+      display: none;
       opacity: 0;
       flex-direction: column;
       justify-content: center;
@@ -227,6 +226,7 @@
 
     &:hover {
       .select-items {
+        display: flex;
         animation: fadeIn 200ms linear forwards;
       }
     }

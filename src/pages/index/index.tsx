@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Wave from './util/wave';
+import Article from './components/articles/articles';
 import './style/index.less';
 
 class Index extends React.Component <IProp, IState> {
@@ -16,7 +17,7 @@ class Index extends React.Component <IProp, IState> {
   }
 
   scrollToContent() {
-    const offsetTop = this.main.current.offsetTop;
+    const offsetTop = this.main.current.offsetTop - 80;
     
     window.scrollTo({
       top: offsetTop, 
@@ -62,7 +63,17 @@ class Index extends React.Component <IProp, IState> {
           
           <canvas ref={this.canvas} className="wave" />
         </div>
-        <div className='main-body' ref={this.main}></div>
+        <div className='main-body' ref={this.main}>
+          <div className="content">
+            <div className="content__part">
+              <h1 className="part__title">text</h1>
+            </div>
+            <div className="content__part">
+              <h1 className="part__title">text2</h1>
+              <Article />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

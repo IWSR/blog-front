@@ -31,7 +31,6 @@ class TitleTabs extends React.Component <IProps, IState> {
   }
 
   renderChildren(children: Array<tabItem>) {
-    console.log('renderChildren');
     if (!children.length) return null;
     return (
       <ul className='select-items'>
