@@ -1,38 +1,95 @@
-.App {
-  text-align: center;
+// iconfont
+@import './assets/iconfont/iconfont.css';
+
+body {
+  overflow: scroll;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body::-webkit-scrollbar {
+  display: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+blockquote, body, button, dd, dl, dt, fieldset, form, h1, h2, h3, h4, h5, h6, hr, input, legend, li, ol, p, pre, td, textarea, th, ul {
+  margin: 0;
+  padding: 0
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+body, button, input, select, textarea {
+  font: 12px/1.5 tahoma, arial, 'Hiragino Sans GB', '\5b8b\4f53', sans-serif
 }
 
-.App-link {
-  color: #61dafb;
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+address, cite, dfn, em, var {
+  font-style: normal
+}
+
+code, kbd, pre, samp {
+  font-family: courier new, courier, monospace
+}
+
+small {
+  font-size: 12px
+}
+
+ol, ul {
+  list-style: none
+}
+
+a {
+  text-decoration: none
+}
+
+a:hover {
+  text-decoration: underline
+}
+
+sup {
+  vertical-align: text-top
+}
+
+sub {
+  vertical-align: text-bottom
+}
+
+legend {
+  color: #000
+}
+
+fieldset, img {
+  border: 0
+}
+
+button, input, select, textarea {
+  font-size: 100%
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+button {
+  border-radius: 0;
+}
+
+div, ul, li {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: 'cat';
+  src: url('./assets/font/cat.TTF');
+}
+
+@font-face {
+  font-family: 'Notosanshans';
+  src: url('./assets/font/NotoSansHans-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  src: url('./assets/font/Ubuntu-M.ttf');
 }
