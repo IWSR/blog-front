@@ -2,12 +2,24 @@ import React from 'react';
 
 import Wave from './util/wave';
 import Article from './components/articles/articles';
+import {RecommendHook} from './components/recommend/recommend';
 import './style/index.less';
 
 class Index extends React.Component <IProp, IState> {
 
   private canvas: any = React.createRef();
   private main: any = React.createRef();
+
+  constructor(props: IProp) {
+    super(props);
+    this.state = {
+      recommendList: [
+        {pic: 'https://2heng.xin/wp-content/uploads//2019/12/2572384-1024x640.jpg', title: 'title here', subTitle: 'subtitle'},
+        {pic: 'https://2heng.xin/wp-content/uploads//2019/12/2572384-1024x640.jpg', title: 'title here', subTitle: 'subtitle'},
+        {pic: 'https://2heng.xin/wp-content/uploads//2019/12/2572384-1024x640.jpg', title: 'title here', subTitle: 'subtitle'}
+      ]
+    };
+  }
 
   componentDidMount() {
     const ctx = this.canvas.current.getContext('2d');
@@ -26,6 +38,8 @@ class Index extends React.Component <IProp, IState> {
   }
 
   render() {
+    const {recommendList} = this.state;
+
     return (
       <div className='index-container'>
         <div className='above-fold'>
@@ -67,6 +81,7 @@ class Index extends React.Component <IProp, IState> {
           <div className="content">
             <div className="content__part">
               <h1 className="part__title">text</h1>
+              <RecommendHook recommendList={recommendList} />
             </div>
             <div className="content__part">
               <h1 className="part__title">text2</h1>
@@ -84,7 +99,13 @@ interface IProp {
 }
 
 interface IState {
-  
+  recommendList: Array<listItem>
+}
+
+interface listItem {
+  pic: string,
+  title: string,
+  subTitle: string
 }
 
 export default Index;
