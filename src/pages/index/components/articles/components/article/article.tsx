@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './style/article.module.less';
+import './style/article.less';
 
 class Article extends React.Component <IProp, IState> {
 
@@ -51,33 +51,32 @@ class Article extends React.Component <IProp, IState> {
     const {index, item} = ctx.props;
     const {isNeedAnimation, isAnimationEnd} = ctx.state;
     const isOdd = (index + 1) % 2 === 1;
-    console.log(styles, 'styles');
 
     return (
-      <div className={`${styles.item} ${isNeedAnimation ? styles['item_animation'] : ''} ${ isAnimationEnd ? styles['item_animation-end'] : ''}`}
+      <div className={`article-item ${isNeedAnimation ? 'article-item_animation' : ''} ${ isAnimationEnd ? 'article-item_animation-end' : ''}`}
         key={index}
         ref={ctx.dom}>
-        <div className={`${styles['item__info']} ${isOdd ? styles['order_2'] : ''}`}>
-          <div className={styles['date']}>{item.date}</div>
-          <div className={styles['title']}>{item.title}</div>
-          <div className={styles['detail']}>
-            <span className={styles['icon']}>
+        <div className={`item__info ${isOdd ? 'order_2' : ''}`}>
+          <div className='date'>{item.date}</div>
+          <div className='title'>{item.title}</div>
+          <div className='detail'>
+            <span className='icon'>
               <i className="iconfont icon-kanbaozhi"></i>
               <p>{ctx.bigNumberHandle(item.viewNum)} 热度</p>
             </span>
-            <span className={styles['icon']}>
+            <span className='icon'>
               <i className="iconfont icon-tubiao--copy"></i>
               <p>{ctx.bigNumberHandle(item.commentNum)} 条评论</p>
             </span>
-            <span className={styles['icon']}>
+            <span className='icon'>
               <i className="iconfont icon-wenjian"></i>
               <p>{item.item}</p>
             </span>
           </div>
-          <div className={styles['abstract']}>{item.abstract}</div>
+          <div className='abstract'>{item.abstract}</div>
         </div>
-        <div className={`${styles['item__pic']} ${isOdd ? '' : styles['order_2']}`}>
-          <div className={styles['pic']} style={{
+        <div className={`item__pic ${isOdd ? '' : 'order_2'}`}>
+          <div className='pic' style={{
             backgroundImage: `url(${item.pic})` 
           }}></div>
         </div>

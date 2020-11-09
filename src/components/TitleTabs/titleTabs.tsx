@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
 
 import _ from '@/tools/lodash';
 import './style/titleTabs.less';
@@ -78,7 +77,7 @@ class TitleTabs extends React.Component <IProps, IState> {
   }
 }
 
-interface IProps extends RouteComponentProps {
+interface IProps {
   tabs: Array<tabItem>
   isShow: boolean
 };
@@ -95,4 +94,4 @@ interface tabItem {
   children?: Array<tabItem>
 }
 
-export default withRouter(TitleTabs);
+export default TitleTabs;

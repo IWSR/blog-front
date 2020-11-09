@@ -30,7 +30,7 @@ class Wave {
     this.h = h;
     this.delay = delay;
   }
-  caculate(x: number, delay: number = 0) {
+  caculate(x: number, delay: number = 0):number {
     /*
       正弦余弦函数 https://www.shuxuele.com/algebra/amplitude-period-frequency-phase-shift.html
     */

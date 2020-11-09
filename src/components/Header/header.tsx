@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter, RouteComponentProps } from 'react-router-dom';
 
 import './style/header.less';
 import TitleTabs from '@/components/TitleTabs/titleTabs';
@@ -123,7 +122,7 @@ class Header extends React.Component <IProps, IState> {
   }
 }
 
-interface IProps extends RouteComponentProps {
+interface IProps {
   
 };
 
@@ -132,4 +131,4 @@ interface IState {
   isNeedShow: boolean
 }
 
-export default withRouter(Header);
+export default Header;
